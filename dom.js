@@ -26,10 +26,19 @@
 //header.innerHTML='<h3>hello</h3>'
 //header.style.borderBottom = 'solid 3px #000';
 //headerdiv.style.borderBottom = 'solid 3px #000';
-var items= document.getElementsByClassName('list-group-item');
-console.log(items);
+//var items= document.getElementsByClassName('list-group-item');
+//console.log(items);
+//console.log(items[2]);
+//items[1].textContent = 'hello';
+//items[1].style.fontWeight = 'bold';
+//items[1].style.backgroundColor = 'white';
+//items[1].style.color = 'green';
+
+var items = document.getElementsByClassName('list-group-item');
 console.log(items[2]);
-items[1].textContent = 'hello';
-items[1].style.fontWeight = 'bold';
-items[1].style.backgroundColor = 'white';
-items[1].style.color = 'green';
+items[2].textContent = 'hello 2';
+items[2].style.backgroundColor = "green";
+//items.style.fontWeight = "bold";
+for(i=0;i<items.length;i++){
+    items[i].style.fontWeight = 'bold';
+}
