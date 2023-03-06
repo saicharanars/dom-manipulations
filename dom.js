@@ -74,18 +74,87 @@
 //nth child
 // var itemnth = document.querySelector('.list-group-item:nth-child(2)');
 // itemnth.style.backgroundColor='green';
-
+//Make the 3rd item invisible
 // var item3 = document.querySelector('.list-group-item:nth-child(3)');
 // item3.style.display='None';
 
 //query selector all
 // var titles = document.querySelectorAll('.title');
 // titles[1].textContent="hello";
-
+//Using QuerySelectorALL change the font color to green for 2nd item in the item list
 // var items = document.querySelectorAll('li');
 // items[1].style.color="green";
+ //Choose all the odd elements and make their background green using QuerySelectorALL﻿
+// var odd = document.querySelectorAll('li:nth-child(odd)');
+// for (var i=0;i<odd.length;i++){
+//     odd[i].style.backgroundColor = 'green';
+// }
 
-var odd = document.querySelectorAll('li:nth-child(odd)');
-for (var i=0;i<odd.length;i++){
-    odd[i].style.backgroundColor = 'green';
-}
+//traverse dom
+var itemlist = document.querySelector('#items');
+//parent
+// console.log(itemlist.parentNode);
+// itemlist.parentNode.style.backgroundColor = 'red';
+// console.log(itemlist.parentNode.parentNode);
+//parent element
+// console.log(itemlist.parentElement);
+// itemlist.parentElement.style.backgroundColor = 'green';
+// console.log(itemlist.parentElement.parentElement);
+
+//child node
+// console.log(itemlist.childNodes);
+
+//children
+// console.log(itemlist.children);
+// console.log(itemlist.children[2]);
+// itemlist.children[2].style.backgroundColor='yellow';
+
+//first child
+// console.log(itemlist.firstChild);
+
+//firstelementchild
+// console.log(itemlist.firstElementChild);
+// itemlist.firstElementChild.textContent="hai";
+
+//lastelementchild
+// console.log(itemlist.lastElementChild);
+// itemlist.lastElementChild.textContent="hai";
+
+//sibling
+//console.log(itemlist.nextSibling);
+//next element sibling
+//console.log(itemlist.nextelementSibling);
+//previous sibling
+//console.log(itemlist.previousSibling);
+//previouselemnetsibling
+// console.log(itemlist.previousElementSibling);
+// itemlist.previousElementSibling.style.color='green';
+
+//create element
+//div
+var newdiv=document.createElement('div');
+console.log(newdiv);
+//add class
+newdiv.className='hello';
+//add id
+newdiv.id="hai";
+//add attr
+newdiv.setAttribute('title','hello dom');
+//create text node
+var newdivtext = document.createTextNode('hello sai');
+//add dic text
+newdiv.appendChild(newdivtext);
+
+var conatiner=document.querySelector('header .container');
+var h1=document.querySelector('header h1');
+
+conatiner.insertBefore(newdiv,h1);
+
+
+
+
+
+
+
+
+
