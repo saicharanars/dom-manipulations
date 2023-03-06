@@ -76,8 +76,15 @@
         event.preventDefault();
         var newName = document.getElementById('name').value
         var newEmail = document.getElementById('email').value
-        localStorage.setItem("name",newName);
-        localStorage.setItem("email",newEmail);
+        var obj = {
+          name:newName,
+          mail=newEmail,
+        }
+        var obj_serialized = JSON.stringify(obj);
+
+        localStorage.setItem("key",obj_serialized);
+        var obj_serialized=JSON.parse(localStorage.getItem('obj'));
+        
       }
     </script>
   </body>
