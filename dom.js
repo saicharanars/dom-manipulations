@@ -137,18 +137,23 @@ console.log(newdiv);
 //add class
 newdiv.className='hello';
 //add id
-newdiv.id="hai";
-//add attr
-newdiv.setAttribute('title','hello dom');
-//create text node
-var newdivtext = document.createTextNode('hello sai');
-//add dic text
-newdiv.appendChild(newdivtext);
+// newdiv.id="hai";
+// //add attr
+// newdiv.setAttribute('title','hello dom');
+// //create text node
+// var newdivtext = document.createTextNode('hello sai');
+// //add dic text
+// newdiv.appendChild(newdivtext);
 
-var conatiner=document.querySelector('header .container');
-var h1=document.querySelector('header h1');
+// var conatiner=document.querySelector('header .container');
+// var h1=document.querySelector('header h1');
+  
+// conatiner.insertBefore(newdiv,h1);
 
-conatiner.insertBefore(newdiv,h1);
+  //adding them to ui
+parentnode = document.getElementById("items");
+parentnode.innerHTML = '<li>hello</li>'+parentnode.innerHTML
+
 
 
 
