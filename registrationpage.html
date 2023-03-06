@@ -78,11 +78,11 @@
         var newEmail = document.getElementById('email').value
         var obj = {
           name:newName,
-          mail=newEmail,
+          mail:newEmail,
         }
         var obj_serialized = JSON.stringify(obj);
 
-        localStorage.setItem("key",obj_serialized);
+        localStorage.setItem(obj.mail,obj_serialized);
         var obj_serialized=JSON.parse(localStorage.getItem('obj'));
         
       }
