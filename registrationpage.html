@@ -98,19 +98,24 @@
         const deleteButton = document.createElement('input');
         deleteButton.type="button";
         deleteButton.value="delete";
-        deleteButton.onclick=()=>{
+        deleteButton.onclick=function(){
           localStorage.removeItem(obj.mail);
           parentElement.remove(childElement);
 
         }
+        
         childElement.appendChild(deleteButton);
         parentElement.appendChild(childElement);
+        // deleteButton.addEventListener('click',removeItem);
       
       
-      
-        localStorage.removeItem(obj.mail);        
-        parentElem.removeChild(childElement);
+        // localStorage.removeItem(obj.mail);        
+        // parentElem.removeChild(childElement);
     }
+    // function removeItem(obj){
+    //   localStorage.removeItem(obj.mail);
+    //   parentElement.remove(childElement);
+    // }
 
     </script>
   </body>
