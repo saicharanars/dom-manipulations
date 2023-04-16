@@ -74,6 +74,15 @@
    
     
     <script>
+      window.addEventListener("DOMContentLoaded",()=>{
+        axios.get("https://crudcrud.com/api/7ed5a823d9084d53acb955ab8129f558/unicorns/")
+        .then(res=>{
+          console.log(res.data);
+          for (var i=0;i<res.data.length;i++){
+            showUser(res.data[i]);
+          }
+        })
+      })
       function getacall(event) {
         event.preventDefault();
         var newName = document.getElementById('name').value
@@ -100,11 +109,11 @@
         
       })
       .catch(err =>console.log(err))
-        var obj_serialized = JSON.stringify(obj);
+        // var obj_serialized = JSON.stringify(obj);
 
-        localStorage.setItem(obj.mail,obj_serialized);
+        // localStorage.setItem(obj.mail,obj_serialized);
         //var obj_serialized2=JSON.parse(localStorage.getItem('obj'));
-        showUser(obj);
+        
         
         
       }
