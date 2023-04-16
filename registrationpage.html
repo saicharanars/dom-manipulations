@@ -121,13 +121,18 @@
         const parentElement = document.getElementById('listOfItem');
         const childElement = document.createElement('li');
         childElement.className="list-group-item"
-        childElement.textContent = obj.name + '-' + obj.mail ;
+        childElement.textContent = obj.name + '-' + obj.mail +obj._id ;
         const deleteButton = document.createElement('input');
         deleteButton.type="button";
         deleteButton.value="delete";
         deleteButton.onclick=function(){
-          localStorage.removeItem(obj.mail);
-          parentElement.remove(childElement);
+          axios.delete(`https://crudcrud.com/api/7ed5a823d9084d53acb955ab8129f558/unicorns/${obj._id}`)
+          .then(res=>{
+            parentElement.remove(childElement);
+          })
+          .catch(err => console.log(err))
+          //localStorage.removeItem(obj.mail);
+          
         }
         // const editButton = document.createElement('input');
         // editButton.type = 'button';
