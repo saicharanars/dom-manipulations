@@ -53,8 +53,8 @@
               <input type="text" class="w-100" name="time" placeholder="time" /><br />
               </div> -->
                
-                <div class="col-sm text-start align-items-center text-wrap">
-                  <button type="submit" class="btn btn-primary btn-md w-100">Get a call</button>
+                <div id=buttondiv class="col-sm text-start align-items-center text-wrap">
+                  <button type="submit" id=buttonget class="btn btn-primary btn-md w-100">Get a call</button>
                 </div>
               
               
@@ -74,10 +74,13 @@
    
     
     <script>
+      var resp=[]
       window.addEventListener("DOMContentLoaded",()=>{
-        axios.get("https://crudcrud.com/api/7ed5a823d9084d53acb955ab8129f558/unicorns/")
+        axios.get("https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/unicorns/")
         .then(res=>{
           console.log(res.data);
+          resp=res.data
+          console.log(resp)
           for (var i=0;i<res.data.length;i++){
             showUser(res.data[i]);
           }
@@ -103,7 +106,7 @@
             
           },
         };
-        axios.post('https://crudcrud.com/api/7ed5a823d9084d53acb955ab8129f558/unicorns',obj,config)
+        axios.post('https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/unicorns',obj,config)
         .then(res=>{
         console.log(res.data);
         
@@ -119,14 +122,17 @@
       }
       function showUser(obj){
         const parentElement = document.getElementById('listOfItem');
+        parentElement.className="list-group"
         const childElement = document.createElement('li');
-        childElement.className="list-group-item"
-        childElement.textContent = obj.name + '-' + obj.mail +obj._id ;
+        childElement.className="list-group-item";
+        childElement.id=obj._id
+        childElement.textContent = obj.name + '     ' + obj.mail+'     ' +obj._id ;
         const deleteButton = document.createElement('input');
         deleteButton.type="button";
         deleteButton.value="delete";
+        deleteButton.className="btn btn-danger";
         deleteButton.onclick=function(){
-          axios.delete(`https://crudcrud.com/api/7ed5a823d9084d53acb955ab8129f558/unicorns/${obj._id}`)
+          axios.delete(`https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/unicorns/${obj._id}`)
           .then(res=>{
             parentElement.remove(childElement);
           })
@@ -134,30 +140,77 @@
           //localStorage.removeItem(obj.mail);
           
         }
-        // const editButton = document.createElement('input');
-        // editButton.type = 'button';
-        // editButton.value = 'Edit';
-        // editButton.onclick = function() {
-        //     localStorage.removeItem(obj.mail);
-        //     parentElem.removeChild(childElement);
-        //     document.getElementById('name').value = obj.name;
-        //     document.getElementById('email').value = obj.mail;
-        //     document.getElementById('phone').value = obj.phone;
-        //     }
+         const editButton = document.createElement('input');
+         editButton.type = 'button';
+         editButton.value = 'Edit';
+         editButton.className="btn btn-warning";
+         childElement.appendChild(deleteButton);
+         childElement.appendChild(editButton)
+         parentElement.appendChild(childElement);
+        editButton.onclick = function() {
+            //localStorage.removeItem(obj.mail);
+            //parentElem.removeChild(childElement);
+            document.getElementById('name').value = obj.name;
+            document.getElementById('email').value = obj.mail;
+            document.getElementById('phone').value = obj.phone;
+            
+            const buttonName=document.getElementById('buttonget');
+            buttonName.disabled="true";
+            const buttondiv=document.getElementById('buttondiv');
+            
+            const buttonupdate = document.createElement('button');
+            
+            buttonupdate.className = "btn btn-primary";
+
+            buttonupdate.innerText="update get acall";
+            childElement.appendChild(buttonupdate);
+            buttonupdate.onclick=function(){
+              var newName = document.getElementById('name').value
+              var newEmail = document.getElementById('email').value
+              var newPhone = document.getElementById('phone').value
+              var obj = {
+                name:newName,
+                mail:newEmail,
+                phone:newPhone,
+            }
+            
+            console.log(childElement.id);
+            axios.put(`https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/unicorns/${childElement.id}`,obj)
+            .then(res=>{
+            console.log(res.data);
         
-        childElement.appendChild(deleteButton);
-        //childElement.appendChild(editButton)
-        parentElement.appendChild(childElement);
-        // deleteButton.addEventListener('click',removeItem);
-      
+      })
+      .catch(err =>console.log(err))
+
+            }
+
+
+            }
+        
+        
+        //deleteButton.addEventListener('click',removeItem);
+      //   editButton.addEventListener('click',editItem);
+      //   function editItem(obj){
+      // let edit = deleteButton.parentElement;
+      // let editobj=JSON.parse(res.data[i].name);
+      // console.log(resp);
+
+      // axios.delete(`https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/appointmentdata/${obj._id}`)
+      // .then(res =>{
+      //  userList.innerHTML =""
+      //  getDataFromApi();
+     
+      // })
+      // .catch(err => console.log(err))
+      // localStorage.removeItem(obj.mail);
+
+      // parentElement.remove(childElement);
+    }
       
         // localStorage.removeItem(obj.mail);        
         // parentElem.removeChild(childElement);
-    }
-    // function removeItem(obj){
-    //   localStorage.removeItem(obj.mail);
-    //   parentElement.remove(childElement);
-    // }
+    
+    
 
     </script>
   </body>
