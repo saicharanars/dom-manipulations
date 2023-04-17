@@ -178,6 +178,8 @@
             axios.put(`https://crudcrud.com/api/236fb89df00840f1a15ee38d77f79a90/unicorns/${childElement.id}`,obj)
             .then(res=>{
             console.log(res.data);
+            childElement.textContent = obj.name + '     ' + obj.mail+'     ' +childElement.id ;
+            
         
       })
       .catch(err =>console.log(err))
